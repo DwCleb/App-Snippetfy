@@ -7,6 +7,7 @@ const guestMiddleware = require('./middlewares/guest');
 
 const authController = require('./controllers/authController');
 const dashboardController = require('./controllers/dashboardController');
+const categoryController = require('./controllers/categoryController');
 
 routes.use((req, res, next) => {
   res.locals.flashSuccess = req.flash('success');
@@ -14,6 +15,9 @@ routes.use((req, res, next) => {
   next();
 });
 
+/**
+ * Auth
+ */
 routes.get('/', guestMiddleware, authController.signin); // signin Route
 routes.get('/signup', guestMiddleware, authController.signup); // signup Route
 routes.get('/signout', authController.signout); // signout Route
@@ -21,9 +25,16 @@ routes.get('/signout', authController.signout); // signout Route
 routes.post('/register', authController.register); // register Route
 routes.post('/authenticate', authController.authenticate); // authenticate Route
 
+/**
+ * Dashboard
+ */
 routes.use('/app', authMiddleware);
-
 routes.get('/app/dashboard', dashboardController.index); // dashboard Route
+
+/**
+ * Category
+ */
+routes.post('/app/categories/create', categoryController.store);
 
 routes.use((req, res) => res.render('errors/404'));
 
