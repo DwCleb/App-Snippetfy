@@ -3,37 +3,7 @@
 {% block body %}
 
   <div class="wrapper">
-    <nav id="main">
-      <div class="header">
-        <strong> My Library </strong>
-        <a href="/signout"> Logout</a>
-      </div>
-
-      <div class="categories">
-        <strong> Categories </strong>
-
-        <ul>
-          {% for category in categories %}
-            <li>
-              <a href="/app/categories/{{ category.id }}">
-                {{ category.title }}
-                <span> {{ category.Snippets.length }} </span>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-        <a href="#" data-modal-open="#new-category"> New Category </a>
-      </div>
-    </nav>
-
-    <div class="modal" id="new-category">
-      <form class="modal-content" method="POST" action="/app/categories/create">
-        <input type="text" name="title" placeholder="Category title">
-
-        <button type="submit"> Save Category</button>
-        <a href="#" data-modal-close="#new-category">Cancel</a>
-      </form>
-    </div>
+    {% include 'partials/nav.njk' %}
   </div>
 
 {% endblock %}
