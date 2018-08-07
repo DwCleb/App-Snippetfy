@@ -3,7 +3,7 @@
     <a href="#" data-modal-open="#new-snippet">New snippet</a>
   </div>
   {% for snippet in snippets %}
-    <a href="/app/categories/{{ activeCategory }}/snipppets/{{ snippet.id }}">
+    <a href="/app/categories/{{ activeCategory }}/snippets/{{ snippet.id }}">
       <strong>{{ snippet.title }}</strong>
       <p>{{ snippet.excerpt }}</p>
     </a>
@@ -11,6 +11,7 @@
 </section>
 <div class="modal" id="new-snippet">
 <form class="modal-content" method="POST" action="/app/categories/{{ activeCategory }}/snippets/create">
+  <input type="hidden" name="CategoryId" value="{{ categoryId }}"/>
   <input type="text" name="title" placeholder="Snippet title">
   <div class="content-container">
     <textarea name="content" id="content" class="mde" placeholder="Enter snippet content"></textarea>
