@@ -5,10 +5,10 @@
     {% include 'partials/nav.njk' %}
     <section class="snippets-list">
       <div class="list-header">
-        <a href="#" data-modal-open="#new-snippet">New snippet</a>
+        <a href="#" data-modal-open="#new-snippet">New Snippet</a>
       </div>
       {% for snippet in snippets %}
-        <a href="/app/categories/{{ activeCategory }}/snipppets/{{ snippet.id }}">
+        <a href="/app/categories/{{ activeCategory }}/snippets/{{ snippet.id }}">
           <strong>{{ snippet.title }}</strong>
           <p>{{ snippet.excerpt }}</p>
         </a>
